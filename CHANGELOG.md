@@ -23,6 +23,7 @@
 - Added: [#5709](https://github.com/ethereum/aleth/pull/5709) [#5728](https://github.com/ethereum/aleth/pull/5728) Istanbul support: EIP-2200 Structured Definitions for Net Gas Metering.
 - Added: [#5751](https://github.com/ethereum/aleth/pull/5751) Istanbul support: EIP-152 Add BLAKE2 compression function `F` precompile.
 - Added: [#5758](https://github.com/ethereum/aleth/pull/5758) Istanbul support: activation in Ropsten config.
+- Added: [#5752](https://github.com/ethereum/aleth/pull/5752) Implement EIP1380 (reduced gas costs for call-to-self) in LegacyVM.
 - Changed: [#5532](https://github.com/ethereum/aleth/pull/5532) The leveldb is upgraded to 1.22. This is breaking change on Windows and the old databases are not compatible.
 - Changed: [#5559](https://github.com/ethereum/aleth/pull/5559) Update peer validation error messages.
 - Changed: [#5568](https://github.com/ethereum/aleth/pull/5568) Improve rlpx handshake log messages and create new rlpx log channel.
