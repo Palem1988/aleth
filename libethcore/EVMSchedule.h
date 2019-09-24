@@ -23,7 +23,6 @@ struct EVMSchedule
     bool eip158Mode = false;
     bool eip1283Mode = false;
     bool eip2200Mode = false;
-    bool eip1380Mode = false;
     bool haveBitwiseShifting = false;
     bool haveRevert = false;
     bool haveReturnData = false;
@@ -48,10 +47,10 @@ struct EVMSchedule
     unsigned logTopicGas = 375;
     unsigned createGas = 32000;
     unsigned callGas = 40;
+    unsigned callSelfGas = callGas;
     unsigned callStipend = 2300;
     unsigned callValueTransferGas = 9000;
     unsigned callNewAccountGas = 25000;
-    unsigned callSelfGas = 40;
     unsigned selfdestructRefundGas = 24000;
     unsigned memoryGas = 3;
     unsigned quadCoeffDiv = 512;
@@ -76,11 +75,14 @@ struct EVMSchedule
     bool emptinessIsNonexistence() const { return eip158Mode; }
     bool zeroValueTransferChargesNewAccountGas() const { return !eip158Mode; }
 <<<<<<< HEAD
+<<<<<<< HEAD
     bool sstoreNetGasMetering() const { return eip1283Mode || eip2200Mode; }
     bool sstoreThrowsIfGasBelowCallStipend() const { return eip2200Mode; }
 =======
     bool reducedCallToSelfGas() const { return eip1380Mode; }
 >>>>>>> Implement eip1380 in LegacyVM
+=======
+>>>>>>> Remove need for eip1380 schedule flag
 };
 
 static const EVMSchedule DefaultSchedule = EVMSchedule();
@@ -96,6 +98,7 @@ static const EVMSchedule EIP150Schedule = []
     schedule.balanceGas = 400;
     schedule.sloadGas = 200;
     schedule.callGas = 700;
+    schedule.callSelfGas = schedule.callGas;
     schedule.selfdestructGas = 5000;
     return schedule;
 }();
@@ -160,7 +163,7 @@ static const EVMSchedule ExperimentalSchedule = [] {
     EVMSchedule schedule = IstanbulSchedule;
     schedule.accountVersion = 1;
     schedule.blockhashGas = 800;
-    schedule.eip1380Mode = true;
+    schedule.callSelfGas = 40;
     return schedule;
 }();
 
