@@ -74,15 +74,8 @@ struct EVMSchedule
     bool staticCallDepthLimit() const { return !eip150Mode; }
     bool emptinessIsNonexistence() const { return eip158Mode; }
     bool zeroValueTransferChargesNewAccountGas() const { return !eip158Mode; }
-<<<<<<< HEAD
-<<<<<<< HEAD
     bool sstoreNetGasMetering() const { return eip1283Mode || eip2200Mode; }
     bool sstoreThrowsIfGasBelowCallStipend() const { return eip2200Mode; }
-=======
-    bool reducedCallToSelfGas() const { return eip1380Mode; }
->>>>>>> Implement eip1380 in LegacyVM
-=======
->>>>>>> Remove need for eip1380 schedule flag
 };
 
 static const EVMSchedule DefaultSchedule = EVMSchedule();
